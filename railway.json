@@ -1,9 +1,0 @@
-{
-  "$schema": "https://railway.app/railway.schema.json",
-  "build": {
-    "buildCommand": "./mvnw clean package -DskipTests -Pproduction"
-  },
-  "deploy": {
-    "startCommand": "java -jar target/task-management-system-0.0.1-SNAPSHOT.jar"
-  }
-}
