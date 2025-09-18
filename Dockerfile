@@ -23,11 +23,15 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests -Pproduction && \
     ls -la target/
 
+# Copy and setup entrypoint script
+COPY docker-entrypoint.sh ./
+RUN chmod +x docker-entrypoint.sh
+
 # Expose port
 EXPOSE 8080
 
 # Set environment variables
 ENV SPRING_PROFILES_ACTIVE=prod
 
-# Run the application
-CMD java -Dserver.port=${PORT:-8080} -Dspring.profiles.active=prod -jar target/task-management-system-0.0.1-SNAPSHOT.jar
+# Run the application - Railway will inject PORT automatically
+CMD ["java", "-jar", "target/task-management-system-0.0.1-SNAPSHOT.jar"]
