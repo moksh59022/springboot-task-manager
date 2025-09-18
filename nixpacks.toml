@@ -4,14 +4,13 @@ nixPkgs = ['maven', 'openjdk17']
 [phases.build]
 cmds = [
     'chmod +x ./mvnw',
-    'export JAVA_HOME=$(dirname $(dirname $(which java)))',
     './mvnw clean package -DskipTests -Pproduction'
 ]
 
 [start]
-cmd = 'export JAVA_HOME=$(dirname $(dirname $(which java))) && java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/*.jar'
+cmd = 'java -jar target/task-management-system-0.0.1-SNAPSHOT.jar'
 
 [variables]
-MAVEN_OPTS = '-Xmx1024m'
+MAVEN_OPTS = '-Xmx512m'
 SPRING_PROFILES_ACTIVE = 'prod'
 JAVA_VERSION = '17'
