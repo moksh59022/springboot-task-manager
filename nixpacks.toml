@@ -4,12 +4,14 @@ nixPkgs = ['maven', 'openjdk17']
 [phases.build]
 cmds = [
     'chmod +x ./mvnw',
+    'export JAVA_HOME=$(dirname $(dirname $(which java)))',
     './mvnw clean package -DskipTests -Pproduction'
 ]
 
 [start]
-cmd = 'java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/*.jar'
+cmd = 'export JAVA_HOME=$(dirname $(dirname $(which java))) && java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/*.jar'
 
 [variables]
 MAVEN_OPTS = '-Xmx1024m'
 SPRING_PROFILES_ACTIVE = 'prod'
+JAVA_VERSION = '17'
