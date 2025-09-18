@@ -30,4 +30,4 @@ EXPOSE 8080
 ENV SPRING_PROFILES_ACTIVE=prod
 
 # Run the application
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -Dspring.profiles.active=prod -jar target/*.jar"]
+CMD java -Dserver.port=${PORT:-8080} -Dspring.profiles.active=prod -jar target/task-management-system-0.0.1-SNAPSHOT.jar
