@@ -1,0 +1,9 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "buildCommand": "./mvnw clean package -DskipTests -Pproduction"
+  },
+  "deploy": {
+    "startCommand": "java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/*.jar"
+  }
+}
