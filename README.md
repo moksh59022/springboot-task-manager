@@ -4,7 +4,7 @@ A professional Task Management System built with **Spring Boot** and **JPA** tha
 
 ## 🌐 Live Demo
 
-**🔗 [Live Application](https://springboot-task-manager-production.up.railway.app)** | **📚 [Swagger UI](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)**
+**📚 [Swagger UI - Start Here!](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)** | **📋 [API Docs](https://springboot-task-manager-production.up.railway.app/api/api-docs)**
 
 **Quick Test Links:**
 - [View All Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks)
