@@ -121,21 +121,33 @@ if $mingw ; then
 fi
 
 if [ -z "$JAVA_HOME" ]; then
-  javaExecutable="`which javac`"
-  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
-    # readlink(1) is not available as standard on Solaris 10.
-    readLink=`which readlink`
-    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
-      if $darwin ; then
+  # Try to find java executable and set JAVA_HOME
+  javaExecutable="`which java`"
+  if [ -n "$javaExecutable" ] && [ -x "$javaExecutable" ]; then
+    # Get the directory containing java
+    javaDir="`dirname \"$javaExecutable\"`"
+    # Get the parent directory (should be JAVA_HOME)
+    JAVA_HOME="`dirname \"$javaDir\"`"
+    export JAVA_HOME
+    echo "Auto-detected JAVA_HOME: $JAVA_HOME"
+  else
+    # Fallback: try javac
+    javaExecutable="`which javac`"
+    if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
+      # readlink(1) is not available as standard on Solaris 10.
+      readLink=`which readlink`
+      if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
+        if $darwin ; then
+          javaHome="`dirname \"$javaExecutable\"`"
+          javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
+        else
+          javaExecutable="`readlink -f \"$javaExecutable\"`"
+        fi
         javaHome="`dirname \"$javaExecutable\"`"
-        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
-      else
-        javaExecutable="`readlink -f \"$javaExecutable\"`"
+        javaHome=`expr "$javaHome" : '\(.*\)/bin'`
+        JAVA_HOME="$javaHome"
+        export JAVA_HOME
       fi
-      javaHome="`dirname \"$javaExecutable\"`"
-      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
-      JAVA_HOME="$javaHome"
-      export JAVA_HOME
     fi
   fi
 fi
