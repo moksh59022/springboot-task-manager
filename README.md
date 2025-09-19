@@ -1,250 +1,99 @@
 # 🚀 Task Management System
 
-A professional Task Management System built with **Spring Boot** and **JPA**. This application provides comprehensive REST APIs for managing users and tasks with role-based access control.
+A professional Task Management System built with **Spring Boot** and **JPA** that provides REST APIs for managing users and tasks with role-based access control.
+
+## 🌐 Live Demo
+
+**🔗 [Live Application](https://springboot-task-manager-production.up.railway.app)** | **📚 [Swagger UI](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)**
+
+**Quick Test Links:**
+- [View All Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks)
+- [View All Users](https://springboot-task-manager-production.up.railway.app/api/users)
 
 ## ✨ Features
 
-- **User Management**: Create and manage users with different roles (ADMIN, USER)
-- **Task Management**: Full CRUD operations for tasks
-- **Role-Based Access Control**: Different permissions for ADMIN and USER roles
-- **Status Tracking**: Track task status (PENDING, IN_PROGRESS, COMPLETED)
-- **Filtering**: Filter tasks by status and assigned user
-- **Input Validation**: Comprehensive validation with meaningful error messages
-- **API Documentation**: Interactive Swagger UI for testing APIs
-- **Exception Handling**: Global exception handling with detailed error responses
+- **User Management** with role-based access control (ADMIN/USER)
+- **Task CRUD Operations** with status tracking (PENDING, IN_PROGRESS, COMPLETED)
+- **Task Filtering** by status and assigned user
+- **Interactive API Documentation** with Swagger UI
+- **Sample Data** pre-loaded for testing
+- **CORS Support** for web applications
 
 ## 🛠 Tech Stack
 
-- **Java 17+**
-- **Spring Boot 3.2.0**
-- **Spring Data JPA** (Hibernate)
-- **H2 Database** (In-memory for demo)
-- **Lombok** (reduces boilerplate code)
-- **Swagger/OpenAPI** (API documentation)
-- **Maven** (dependency management)
+- **Java 21** | **Spring Boot 3.2.0** | **Spring Data JPA**
+- **H2 Database** (in-memory with sample data)
+- **Swagger/OpenAPI 3** | **Maven** | **Railway** (deployment)
 
-## 📁 Project Structure
+## 📊 Sample Data
 
-```
-src/main/java/com/taskmanager/
-├── controller/          # REST Controllers
-│   ├── UserController.java
-│   └── TaskController.java
-├── service/            # Business Logic Layer
-│   ├── UserService.java
-│   └── TaskService.java
-├── repository/         # Data Access Layer
-│   ├── UserRepository.java
-│   └── TaskRepository.java
-├── model/              # JPA Entities
-│   ├── User.java
-│   ├── Task.java
-│   ├── Role.java
-│   └── TaskStatus.java
-├── dto/                # Data Transfer Objects
-│   ├── UserRequestDto.java
-│   ├── UserResponseDto.java
-│   ├── TaskRequestDto.java
-│   ├── TaskResponseDto.java
-│   ├── TaskUpdateDto.java
-│   └── TaskStatusUpdateDto.java
-├── exception/          # Exception Handling
-│   ├── GlobalExceptionHandler.java
-│   ├── ResourceNotFoundException.java
-│   ├── BadRequestException.java
-│   ├── ForbiddenException.java
-│   └── ErrorResponse.java
-├── config/             # Configuration Classes
-│   └── OpenApiConfig.java
-└── TaskManagementSystemApplication.java
-```
+**Users:**
+1. **Admin User** (admin@taskmanager.com) - ADMIN role
+2. **John Doe** (john.doe@example.com) - USER role
+3. **Jane Smith** (jane.smith@example.com) - USER role
 
-## 🗄 Database Schema
-
-### Users Table
-- `id` (Primary Key)
-- `name` (String, required)
-- `email` (String, unique, required)
-- `role` (Enum: ADMIN, USER)
-
-### Tasks Table
-- `id` (Primary Key)
-- `title` (String, required)
-- `description` (Text, optional)
-- `status` (Enum: PENDING, IN_PROGRESS, COMPLETED)
-- `created_at` (Timestamp, auto-generated)
-- `updated_at` (Timestamp, auto-updated)
-- `assigned_to` (Foreign Key to Users)
-
-## 🚦 Getting Started
-
-### Prerequisites
-- Java 17 or higher
-- Maven 3.6+
-- MySQL 8.0+ (or PostgreSQL/H2 for alternatives)
-
-### Database Setup
-
-1. **MySQL Setup** (Default):
-   ```sql
-   CREATE DATABASE taskmanager_db;
-   CREATE USER 'taskuser'@'localhost' IDENTIFIED BY 'password';
-   GRANT ALL PRIVILEGES ON taskmanager_db.* TO 'taskuser'@'localhost';
-   ```
-
-2. **Alternative: Use H2 In-Memory Database** (for quick testing):
-   - Uncomment H2 configuration in `application.properties`
-   - Comment out MySQL configuration
-
-### Running the Application
-
-1. **Clone and navigate to the project**:
-   ```bash
-   cd task-management-system
-   ```
-
-2. **Update database configuration** in `src/main/resources/application.properties`:
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/taskmanager_db?createDatabaseIfNotExist=true
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   ```
-
-3. **Run the application**:
-   ```bash
-   mvn spring-boot:run
-   ```
-
-4. **Access the application**:
-   - **API Base URL**: http://localhost:8080/api
-   - **Swagger UI**: http://localhost:8080/api/swagger-ui.html
-   - **API Docs**: http://localhost:8080/api/api-docs
+**Tasks:**
+1. Setup Development Environment - ✅ COMPLETED
+2. Design Database Schema - 🔄 IN_PROGRESS
+3. Implement User Authentication - ⏳ PENDING
+4. Create API Documentation - ⏳ PENDING
+5. Code Review and Testing - ⏳ PENDING
 
 ## 📖 API Endpoints
 
-### User APIs
+### User Management
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/users` | Create a new user |
-| GET | `/api/users` | Get all users |
-| GET | `/api/users/{id}` | Get user by ID |
+| `GET` | `/api/users` | Get all users |
+| `GET` | `/api/users/{id}` | Get user by ID |
+| `POST` | `/api/users` | Create a new user |
 
-### Task APIs
+### Task Management
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/tasks` | Create a new task |
-| GET | `/api/tasks` | Get all tasks (with optional filters) |
-| GET | `/api/tasks/{id}` | Get task by ID |
-| PUT | `/api/tasks/{id}` | Update task details |
-| PATCH | `/api/tasks/{id}/status` | Update task status only |
-| DELETE | `/api/tasks/{id}` | Delete task (ADMIN only) |
+| `GET` | `/api/tasks` | Get all tasks (with optional filtering) |
+| `GET` | `/api/tasks/{id}` | Get task by ID |
+| `POST` | `/api/tasks` | Create a new task |
+| `PUT` | `/api/tasks/{id}` | Update task |
+| `PATCH` | `/api/tasks/{id}/status` | Update task status |
+| `DELETE` | `/api/tasks/{id}` | Delete task |
 
-### Query Parameters for GET /api/tasks
-- `status`: Filter by task status (PENDING, IN_PROGRESS, COMPLETED)
-- `userId`: Filter by assigned user ID
+**Query Parameters:**
+- `?status=PENDING` - Filter by status
+- `?userId=1` - Filter by assigned user
+- `?status=IN_PROGRESS&userId=2` - Combined filters
 
-## 🔒 Business Rules & Security
+## 🧪 How to Test
 
-1. **Task Assignment**: Every task must be assigned to a valid user
-2. **Role-Based Access**:
-   - **ADMIN**: Can perform all operations including deleting tasks
-   - **USER**: Can only update tasks assigned to them
-3. **Validation Rules**:
-   - User email must be valid and unique
-   - Task title is required
-   - Proper error handling with meaningful messages
+### **Option 1: Swagger UI (Recommended)**
+1. Visit [Swagger UI](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)
+2. Click any endpoint → "Try it out" → "Execute"
 
-## 📝 Sample API Usage
+### **Option 2: Direct Browser**
+- [All Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks)
+- [All Users](https://springboot-task-manager-production.up.railway.app/api/users)
+- [Pending Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks?status=PENDING)
 
-### 1. Create a User
-```bash
-curl -X POST http://localhost:8080/api/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "role": "USER"
-  }'
-```
-
-### 2. Create a Task
-```bash
-curl -X POST http://localhost:8080/api/tasks \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "Complete project documentation",
-    "description": "Write comprehensive documentation for the project",
-    "status": "PENDING",
-    "assignedToId": 1
-  }'
-```
-
-### 3. Update Task Status
-```bash
-curl -X PATCH http://localhost:8080/api/tasks/1/status \
-  -H "Content-Type: application/json" \
-  -H "X-User-Id: 1" \
-  -H "X-User-Role: USER" \
-  -d '{
-    "status": "IN_PROGRESS"
-  }'
-```
-
-### 4. Get Tasks with Filters
+### **Option 3: cURL Examples**
 ```bash
 # Get all tasks
-curl http://localhost:8080/api/tasks
+curl "https://springboot-task-manager-production.up.railway.app/api/tasks"
 
-# Get tasks by status
-curl http://localhost:8080/api/tasks?status=PENDING
+# Create new task
+curl -X POST "https://springboot-task-manager-production.up.railway.app/api/tasks" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "New Task", "description": "Test task", "priority": "HIGH", "assignedTo": 1}'
 
-# Get tasks by user
-curl http://localhost:8080/api/tasks?userId=1
-
-# Get tasks by status and user
-curl http://localhost:8080/api/tasks?status=IN_PROGRESS&userId=1
+# Update task status
+curl -X PATCH "https://springboot-task-manager-production.up.railway.app/api/tasks/1/status" \
+  -H "Content-Type: application/json" \
+  -d '{"status": "IN_PROGRESS"}'
 ```
 
-## 🧪 Testing
+## 👨‍💻 Author
 
-The application includes comprehensive error handling and validation. Use the Swagger UI at http://localhost:8080/api/swagger-ui.html to test all endpoints interactively.
-
-## 🔧 Configuration Options
-
-### Database Configuration
-Switch between different databases by modifying `application.properties`:
-
-- **MySQL** (default): Already configured
-- **PostgreSQL**: Uncomment PostgreSQL section
-- **H2 In-Memory**: Uncomment H2 section for quick testing
-
-### Logging
-Adjust logging levels in `application.properties`:
-```properties
-logging.level.com.taskmanager=DEBUG
-logging.level.org.springframework.web=DEBUG
-```
-
-## 🚀 Deployment
-
-For production deployment:
-
-1. Update `application.properties` with production database credentials
-2. Build the application: `mvn clean package`
-3. Run the JAR: `java -jar target/task-management-system-0.0.1-SNAPSHOT.jar`
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+**Moksh Sharma** - [@moksh59022](https://github.com/moksh59022) - [Repository](https://github.com/moksh59022/springboot-task-manager)
 
 ---
 
-**Ready to run with `mvn spring-boot:run`!** 🎉
+**🎯 Start Testing:** [Swagger UI](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html) 🚀
