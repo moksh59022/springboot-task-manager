@@ -124,12 +124,25 @@ if [ -z "$JAVA_HOME" ]; then
   # Try to find java executable and set JAVA_HOME
   javaExecutable="`which java`"
   if [ -n "$javaExecutable" ] && [ -x "$javaExecutable" ]; then
-    # Get the directory containing java
-    javaDir="`dirname \"$javaExecutable\"`"
-    # Get the parent directory (should be JAVA_HOME)
-    JAVA_HOME="`dirname \"$javaDir\"`"
-    export JAVA_HOME
-    echo "Auto-detected JAVA_HOME: $JAVA_HOME"
+    # Special handling for Railway's mise setup
+    if echo "$javaExecutable" | grep -q "/mise/shims"; then
+      # For Railway's mise, find the actual Java installation
+      if [ -d "/mise/installs/java" ]; then
+        # Find the Java version directory
+        javaVersionDir="`ls -1 /mise/installs/java/ | head -1`"
+        if [ -n "$javaVersionDir" ]; then
+          JAVA_HOME="/mise/installs/java/$javaVersionDir"
+          export JAVA_HOME
+          echo "Auto-detected JAVA_HOME for Railway mise: $JAVA_HOME"
+        fi
+      fi
+    else
+      # Standard JAVA_HOME detection
+      javaDir="`dirname \"$javaExecutable\"`"
+      JAVA_HOME="`dirname \"$javaDir\"`"
+      export JAVA_HOME
+      echo "Auto-detected JAVA_HOME: $JAVA_HOME"
+    fi
   else
     # Fallback: try javac
     javaExecutable="`which javac`"
