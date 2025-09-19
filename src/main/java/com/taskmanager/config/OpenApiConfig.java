@@ -30,11 +30,11 @@ public class OpenApiConfig {
                                 .url("https://opensource.org/licenses/MIT")))
                 .servers(List.of(
                         new Server()
-                                .url("http://localhost:8080/api")
-                                .description("Development Server"),
+                                .url("https://springboot-task-manager-production.up.railway.app/api")
+                                .description("Railway Production Server"),
                         new Server()
-                                .url("https://api.taskmanager.com")
-                                .description("Production Server")
+                                .url("http://localhost:8080/api")
+                                .description("Local Development Server")
                 ));
     }
 }
