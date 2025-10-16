@@ -6,13 +6,13 @@ A professional Task Management System built with **Spring Boot** and **JPA** tha
 
 **📚 Swagger UI - Start Here!** | **📋 API Docs**
 
-> **Note**: After deploying to Render, update these links with your Render app URL:
-> - Swagger UI: `https://your-app-name.onrender.com/api/swagger-ui.html`
-> - API Docs: `https://your-app-name.onrender.com/api/api-docs`
+> **Live Render Instance:**
+> - Swagger UI: `https://springboot-task-manager-1.onrender.com/api/swagger-ui.html`
+> - API Docs: `https://springboot-task-manager-1.onrender.com/api/api-docs`
 
 **Quick Test Links:**
-- View All Tasks: `https://your-app-name.onrender.com/api/tasks`
-- View All Users: `https://your-app-name.onrender.com/api/users`
+- View All Tasks: `https://springboot-task-manager-1.onrender.com/api/tasks`
+- View All Users: `https://springboot-task-manager-1.onrender.com/api/users`
 
 ## ✨ Features
 
@@ -70,26 +70,26 @@ A professional Task Management System built with **Spring Boot** and **JPA** tha
 ## 🧪 How to Test
 
 ### **Option 1: Swagger UI (Recommended)**
-1. Visit [Swagger UI](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)
+1. Visit [Swagger UI](https://springboot-task-manager-1.onrender.com/api/swagger-ui.html)
 2. Click any endpoint → "Try it out" → "Execute"
 
 ### **Option 2: Direct Browser**
-- [All Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks)
-- [All Users](https://springboot-task-manager-production.up.railway.app/api/users)
-- [Pending Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks?status=PENDING)
+- [All Tasks](https://springboot-task-manager-1.onrender.com/api/tasks)
+- [All Users](https://springboot-task-manager-1.onrender.com/api/users)
+- [Pending Tasks](https://springboot-task-manager-1.onrender.com/api/tasks?status=PENDING)
 
 ### **Option 3: cURL Examples**
 ```bash
 # Get all tasks
-curl "https://springboot-task-manager-production.up.railway.app/api/tasks"
+curl "https://springboot-task-manager-1.onrender.com/api/tasks"
 
 # Create new task
-curl -X POST "https://springboot-task-manager-production.up.railway.app/api/tasks" \
+curl -X POST "https://springboot-task-manager-1.onrender.com/api/tasks" \
   -H "Content-Type: application/json" \
   -d '{"title": "New Task", "description": "Test task", "priority": "HIGH", "assignedTo": 1}'
 
 # Update task status
-curl -X PATCH "https://springboot-task-manager-production.up.railway.app/api/tasks/1/status" \
+curl -X PATCH "https://springboot-task-manager-1.onrender.com/api/tasks/1/status" \
   -H "Content-Type: application/json" \
   -d '{"status": "IN_PROGRESS"}'
 ```

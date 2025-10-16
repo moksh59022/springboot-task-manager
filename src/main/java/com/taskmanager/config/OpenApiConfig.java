@@ -30,8 +30,8 @@ public class OpenApiConfig {
                                 .url("https://opensource.org/licenses/MIT")))
                 .servers(List.of(
                         new Server()
-                                .url("https://springboot-task-manager-production.up.railway.app/api")
-                                .description("Railway Production Server"),
+                                .url("https://springboot-task-manager-1.onrender.com/api")
+                                .description("Render Production Server"),
                         new Server()
                                 .url("http://localhost:8080/api")
                                 .description("Local Development Server")
