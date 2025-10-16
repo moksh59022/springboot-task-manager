@@ -1,0 +1,24 @@
+# Maven
+target/
+!target/*.jar
+
+# IDE specific files
+.idea/
+*.iml
+*.iws
+
+# Log files
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+*.env.*
+!.env.example
