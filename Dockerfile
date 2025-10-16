@@ -31,6 +31,7 @@ USER 1001
 
 # Expose the port (for documentation only, doesn't actually publish the port)
 EXPOSE 8080
+# 
 
 # Command to run the application
-ENTRYPOINT ["java", "$JAVA_OPTS", "-jar", "app.jar", "--server.port=${PORT:-8080}"]
+ENTRYPOINT ["sh", "-c", "exec java $JAVA_OPTS -jar app.jar --server.port=${PORT:-8080}"]
