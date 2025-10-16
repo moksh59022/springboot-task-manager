@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: task-management-system
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -jar target/*.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JAVA_TOOL_OPTIONS
+        value: "-XX:MaxRAMPercentage=75.0"
+    plan: free
+  - type: pserv
+    name: task-management-postgres
+    env: docker
+    plan: free

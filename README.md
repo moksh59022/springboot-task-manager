@@ -4,11 +4,15 @@ A professional Task Management System built with **Spring Boot** and **JPA** tha
 
 ## 🌐 Live Demo
 
-**📚 [Swagger UI - Start Here!](https://springboot-task-manager-production.up.railway.app/api/swagger-ui.html)** | **📋 [API Docs](https://springboot-task-manager-production.up.railway.app/api/api-docs)**
+**📚 Swagger UI - Start Here!** | **📋 API Docs**
+
+> **Note**: After deploying to Render, update these links with your Render app URL:
+> - Swagger UI: `https://your-app-name.onrender.com/api/swagger-ui.html`
+> - API Docs: `https://your-app-name.onrender.com/api/api-docs`
 
 **Quick Test Links:**
-- [View All Tasks](https://springboot-task-manager-production.up.railway.app/api/tasks)
-- [View All Users](https://springboot-task-manager-production.up.railway.app/api/users)
+- View All Tasks: `https://your-app-name.onrender.com/api/tasks`
+- View All Users: `https://your-app-name.onrender.com/api/users`
 
 ## ✨ Features
 
