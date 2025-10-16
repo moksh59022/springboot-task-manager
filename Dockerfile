@@ -18,7 +18,7 @@ WORKDIR /app
 ENV SPRING_PROFILES_ACTIVE=prod \
     TZ=UTC \
     LANG=C.UTF-8 \
-    JAVA_OPTS="-XX:MaxRAMPercentage=75.0 -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/./urandom"
+    JAVA_OPTS="-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/./urandom"
 
 # Copy the JAR file
 COPY --from=build /workspace/app/target/*.jar app.jar
