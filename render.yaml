@@ -1,19 +1,13 @@
 services:
   - type: web
     name: task-management-system
-    env: docker
-    plan: free
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -jar target/*.jar
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: SPRING_DATASOURCE_URL
-        value: postgresql://taskmanager_db_dcb4_user:gyiBA7yTr4gIDJTOhYhjeoWo0QksgBLH@dpg-d3o7sb9r0fns73bvm9i0-a.oregon-postgres.render.com:5432/taskmanager_db_dcb4
-      - key: SPRING_DATASOURCE_USERNAME
-        value: taskmanager_db_dcb4_user
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: gyiBA7yTr4gIDJTOhYhjeoWo0QksgBLH
-      - key: JAVA_TOOL_OPTIONS
-        value: "-XX:MaxRAMPercentage=75.0"
+    plan: free
   - type: pserv
     name: task-management-postgres
     env: docker
